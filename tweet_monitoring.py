@@ -2,7 +2,7 @@ import tweepy as tw
 import time
 import credentials as config
 import csv
-
+import keyboard
 
 
 file_name = 'tweets.csv'
@@ -54,6 +54,7 @@ def data():
 while True:
     time.sleep(5)
     data()
+    keyboard.press_and_release("F5")
 
 
 
