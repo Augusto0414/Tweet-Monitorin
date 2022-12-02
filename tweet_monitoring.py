@@ -40,13 +40,16 @@ def data():
         response.data.public_metrics['following_count'])
   print('Numero de tweets: ',
         response.data.public_metrics['tweet_count'])
-  seguidores = response.data.public_metrics['followers_count']
-  seguidos =  response.data.public_metrics['following_count']
-  twee =  response.data.public_metrics['tweet_count']
-  linea = [seguidores, seguidos, twee]
-  linea = linea
-  wr.writerow(linea)
-
+  with open('tweets.csv', 'w') as csvfile:
+      fieldnames = ['seguidores', 'seguidos', 'tweets']
+      writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+      seguidores = response.data.public_metrics['followers_count']
+      seguidos = response.data.public_metrics['following_count']
+      twee = response.data.public_metrics['tweet_count']
+      writer.writeheader()
+      writer.writerow({'seguidores': seguidores,
+                       'seguidos': seguidos, 'tweets': twee})
+  my_file.close()
 
 while True:
     time.sleep(5)
