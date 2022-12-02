@@ -49,11 +49,17 @@ def data():
       writer.writeheader()
       writer.writerow({'seguidores': seguidores,
                        'seguidos': seguidos, 'tweets': twee})
+
+      #base de datos
+
+
   my_file.close()
 
+
+
 while True:
-    time.sleep(5)
     data()
+    time.sleep(10)
     keyboard.press_and_release("F5")
 
 
